@@ -822,7 +822,6 @@
 }
 
 /* POP-UP */
-
 /* Aura Popup Styles */
 .aura-combined-popup {
     position: fixed;
@@ -839,7 +838,8 @@
     width: 90%;
     color: white;
     font-family: 'Segoe UI', Arial, sans-serif;
-    animation: popupIn 0.4s cubic-bezier(0.26, 1.04, 0.54, 1) forwards;
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 
 .aura-popup-content h2 {
@@ -948,6 +948,11 @@
     border-radius: 50%;
 }
 
+.aura-radio-text {
+    color: white;
+    font-size: 14px;
+}
+
 .aura-button-group {
     display: flex;
     justify-content: center;
@@ -988,7 +993,7 @@
 }
 
 /* Animation keyframes */
-@keyframes popupIn {
+@keyframes auraPopupIn {
     0% {
         transform: translate(-50%, -50%) scale(0.9);
         opacity: 0;
@@ -999,7 +1004,7 @@
     }
 }
 
-@keyframes popupOut {
+@keyframes auraPopupOut {
     0% {
         transform: translate(-50%, -50%) scale(1);
         opacity: 1;
@@ -1038,3 +1043,5 @@
         gap: 10px;
     }
 }
+
+
