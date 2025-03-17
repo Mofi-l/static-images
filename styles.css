@@ -820,3 +820,221 @@
     max-height: calc(100vh - 20px);
     overflow-y: auto;
 }
+
+/* POP-UP */
+
+/* Aura Popup Styles */
+.aura-combined-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 10000;
+    background: url(https://raw.githubusercontent.com/Mofi-l/static-images/main/Background.jpg) no-repeat center center / cover;
+    padding: 35px;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+    max-width: 650px;
+    width: 90%;
+    color: white;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    animation: popupIn 0.4s cubic-bezier(0.26, 1.04, 0.54, 1) forwards;
+}
+
+.aura-popup-content h2 {
+    margin-bottom: 25px;
+    font-size: 32px;
+    text-align: center;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.aura-input-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.aura-input-field {
+    flex: 1;
+    min-width: 250px;
+}
+
+.aura-input-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.aura-input-field input,
+.aura-input-field textarea {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.aura-input-field input:focus,
+.aura-input-field textarea:focus {
+    outline: none;
+    border-color: rgba(108, 92, 231, 0.6);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+}
+
+.aura-input-field input::placeholder,
+.aura-input-field textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.aura-radio-group {
+    margin: 20px 0;
+}
+
+.aura-radio-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.aura-radio-options {
+    display: flex;
+    gap: 20px;
+}
+
+.aura-radio-option {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.aura-radio-option input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    margin-right: 8px;
+    position: relative;
+    cursor: pointer;
+}
+
+.aura-radio-option input[type="radio"]:checked {
+    border-color: #6c5ce7;
+    background: #6c5ce7;
+}
+
+.aura-radio-option input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+}
+
+.aura-button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.aura-popup-button {
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.aura-submit-btn {
+    background: linear-gradient(135deg, #6c5ce7, #a393f5);
+    color: white;
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+}
+
+.aura-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
+}
+
+.aura-cancel-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    backdrop-filter: blur(4px);
+}
+
+.aura-cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Animation keyframes */
+@keyframes popupIn {
+    0% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes popupOut {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .aura-combined-popup {
+        width: 95%;
+        padding: 25px;
+    }
+
+    .aura-popup-content h2 {
+        font-size: 24px;
+    }
+
+    .aura-input-field {
+        min-width: 100%;
+    }
+
+    .aura-button-group {
+        flex-direction: column;
+    }
+
+    .aura-popup-button {
+        width: 100%;
+    }
+
+    .aura-radio-options {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
