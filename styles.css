@@ -1,0 +1,822 @@
+/* Part 1: Base Variables and Core Styles */
+:root {
+  --dropdown-bg: rgba(0, 0, 0, 0.85);
+  --dropdown-hover: rgba(20, 20, 20, 0.95);
+  --border-color: rgba(255, 255, 255, 0.15);
+  --highlight-color: #6c5ce7;
+  --text-color: #ffffff;
+  --modal-bg: rgba(0, 0, 0, 0.7);
+  --modal-content-bg: linear-gradient(145deg, #2c3e50, #232f3e);
+}
+
+/* Widget Base Styles */
+#aux-widget {
+  width: 250px;
+  height: auto;
+  max-height: 500px;
+  overflow-y: auto;
+  transition: height 0.3s ease;
+  position: fixed;
+  top: 5px;
+  left: 1000px;
+  z-index: 10000;
+  background: url(https://raw.githubusercontent.com/Mofi-l/static-images/main/Background.jpg) no-repeat center center / cover;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  color: white;
+}
+
+/* Enhanced Dropdown Styling */
+#aux-widget select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--dropdown-bg);
+  color: var(--text-color);
+  font-size: 13px;
+  font-family: 'Arial', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+  padding-right: 30px;
+}
+
+/* Dropdown States */
+#aux-widget select:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#aux-widget select:focus {
+  outline: none;
+  border-color: var(--highlight-color);
+  box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.2);
+}
+
+#aux-widget select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Dropdown Options */
+#aux-widget select option {
+  background-color: var(--dropdown-bg);
+  color: var(--text-color);
+  padding: 10px;
+  border: none;
+  font-size: 13px;
+}
+
+#aux-widget select option:hover {
+  background-color: var(--dropdown-hover);
+}
+
+#aux-widget select option:checked {
+  background-color: rgba(108, 92, 231, 0.2);
+}
+
+/* Container Styling */
+#aux-l2-container,
+#aux-l3-container {
+  margin-top: 10px;
+  position: relative;
+}
+
+/* Timer display styling */
+#aux-timer {
+  padding: 5px;
+  margin-top: 5px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 4px;
+  font-size: 13px;
+  color: #333;
+}
+
+/* Firefox-specific styles */
+@-moz-document url-prefix() {
+  #aux-widget select {
+    color: var(--text-color);
+    background-color: var(--dropdown-bg);
+    padding-right: 8px;
+  }
+}
+
+/* Transparent dropdown styling */
+.transparent-dropdown {
+  background-color: var(--dropdown-bg) !important;
+  color: var(--text-color) !important;
+}
+
+/* Part 2: Action Buttons and Icon Effects */
+#action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+#action-buttons img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
+  position: relative;
+  overflow: hidden;
+}
+
+/* Icon Hover Effects */
+#action-buttons img:hover {
+  transform: scale(1.15);
+  filter: brightness(1.3) drop-shadow(0 0 8px rgba(255, 255, 255, 0.4))
+          sepia(0.3) hue-rotate(70deg);
+}
+
+#action-buttons img:active {
+  transform: scale(0.95);
+  filter: brightness(0.9);
+}
+
+/* Custom Button Effects */
+#minimize-button img,
+#maximize-button img {
+  transition: transform 0.3s ease;
+}
+
+#minimize-button img:hover {
+  transform: scale(1.15) translateY(2px);
+}
+
+#maximize-button img:hover {
+  transform: scale(1.15) translateY(-2px);
+}
+
+/* Minimize Button Styling */
+#minimize-btn img {
+  width: 50px;
+  height: 50px;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 8px rgba(255, 165, 0, 0.6));
+  animation: auraGlow 2s infinite ease-in-out;
+}
+
+#minimize-btn img:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 15px rgba(255, 165, 0, 0.8))
+          drop-shadow(0 0 25px rgba(255, 140, 0, 0.4));
+  animation: gentleRotate 2s infinite ease-in-out;
+}
+
+/* Part 3: Modal Styles */
+/* Authentication Modal Styling */
+#auth-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 25, 40, 0.95);
+    backdrop-filter: blur(12px);
+    display: grid;
+    place-items: center;
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.modal-content {
+    width: 320px;
+    padding: 28px;
+    background: linear-gradient(
+        145deg,
+        rgba(37, 47, 63, 0.7),
+        rgba(48, 59, 76, 0.4)
+    );
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: scale(0.95);
+    animation: popIn 0.4s ease forwards;
+}
+
+#auth-modal h2 {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+}
+
+.input-group {
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    font-size: 14px;
+    color: white;
+    transition: all 0.3s;
+}
+
+.auth-input:focus {
+    outline: none;
+    border-color: #6c5ce7;
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.auth-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.password-group {
+    position: relative;
+}
+
+#toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    cursor: pointer;
+    padding: 4px;
+    transition: 0.3s;
+}
+
+#toggle-password:hover {
+    color: white;
+}
+
+.button-group {
+    display: flex;
+    gap: 8px;
+    margin-top: 24px;
+}
+
+.btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #6c5ce7, #a393f5);
+    color: white;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    backdrop-filter: blur(5px);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Error Animation */
+.auth-input.error {
+    animation: shake 0.3s ease-in-out;
+    border-color: #ff4757;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+}
+
+/* Responsive Design */
+@media (max-width: 380px) {
+    .modal-content {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .btn {
+        padding: 8px;
+        font-size: 13px;
+    }
+}
+
+/* Part 4: Button Styles */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  gap: 15px;
+}
+
+.btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex: 1;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0056b3, #004494);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #6c757d, #495057);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #495057, #343a40);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+}
+
+/* Part 5: Animations and Keyframes */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
+  }
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
+  }
+}
+
+@keyframes rotateIcon {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shine {
+  from { background-position: -100% 0; }
+  to { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes auraGlow {
+  0% {
+    filter: drop-shadow(0 0 8px rgba(255, 165, 0, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 165, 0, 0.8))
+            drop-shadow(0 0 30px rgba(255, 140, 0, 0.5));
+  }
+  100% {
+    filter: drop-shadow(0 0 8px rgba(255, 165, 0, 0.6));
+  }
+}
+
+@keyframes gentleRotate {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(5deg) scale(1.05); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+/* Part 6: Date Range Modal Styles */
+.date-range-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: b: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.date-range-modal .modal-content {
+  background: linear-gradient(145deg, #2c3e50, #232f3e);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+              0 0 0 1px rgba(255, 255, 255, 0.1);
+  text-align: center;
+  width: auto;
+  position: relative;
+  max-width: 95%;
+  animation: modalSlideUp 0.4s ease-out;
+}
+
+.modal-title {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.modal-subtitle {
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+}
+
+/* Calendar Styles */
+.calendar-wrapper {
+  margin-bottom: 20px;
+  paddadding: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.flatpickr-calendar {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  font-family: 'Inter', sans-serif;
+  margin: 0 auto;
+  border: none;
+  padding: 10px;
+}
+
+.flatpickr-months {
+  background-color: #f8f9fa;
+  border-radius: 12px 12px 0 0;
+  padding: 10px 0;
+}
+
+.flatpickr-day {
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.flatpickr-day:hover {
+  background-color: rgba(46, 204, 113, 0.1);
+  color: #2ecc71;
+}
+
+.flatpickr-day.selected {
+  background-color: #2ecc71;
+  color: white;
+  box-shadow: 0 3px 10px rgba(46, 204, 113, 0.3);
+}
+
+.flatpickr-day.inRange {
+  background-color: rgba(46, 204, 113, 0.1);
+  color: #2ecc71;
+}
+
+/* Part 7: Special Effects and Tooltips */
+#action-buttons img::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+#action-buttons img:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-8px);
+}
+
+#action-buttons img::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shine 1.5s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#action-buttons img:hover::before {
+  opacity: 1;
+}
+
+/* Active States */
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Focus States */
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.3);
+}
+
+/* Animation Classes */
+#action-buttons img.pulse {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+#action-buttons img.rotate {
+  animation: rotateIcon 1s linear;
+}
+
+#action-buttons img.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+#toggle-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    padding: 5px;
+    transition: transform 0.3s ease;
+}
+
+#toggle-button img {
+    width: 15px;
+    height: 15px;
+    transition: transform 0.3s ease;
+}
+
+#toggle-button.active img {
+    transform: rotate(180deg);
+}
+
+/* Optional hover effect */
+#toggle-button:hover {
+    opacity: 0.8;
+}
+
+/* Optional: Add focus outline for accessibility */
+#toggle-button:focus {
+    outline: none;
+}
+
+#toggle-button:focus-visible {
+    box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.4);
+    border-radius: 4px;
+}
+
+//Avatar//
+#username-display {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    position: relative;
+}
+
+#avatar-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+#avatar-container a {
+    position: relative;
+    text-decoration: none;
+    display: block;
+}
+
+#avatar-container img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+#avatar-container img:hover {
+    border-color: #232f3e; /* Amazon's dark blue */
+}
+
+#avatar-container span {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.avatar-popup {
+    position: fixed;
+    display: none;
+    width: 200px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 15px;
+    z-index: 9999;
+    transform: translate(-50%, -100%);
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -90%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -100%);
+    }
+}
+
+.avatar-popup img {
+    width: 170px !important;
+    height: 170px !important;
+    border-radius: 8px !important;
+    margin-bottom: 10px;
+    object-fit: cover;
+    border: none !important;
+}
+
+.popup-username {
+    text-align: center;
+    font-weight: 500;
+    color: #232f3e;
+    font-size: 14px;
+    padding: 5px 0;
+}
+
+#avatar-container a:hover .avatar-popup {
+    display: block;
+}
+
+/* Loading state */
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+#avatar-container img[src*="loading"] {
+    animation: pulse 1.5s infinite;
+}
+
+/* Fallback styles */
+#avatar-container img[src*="fallback-avatar"] {
+    background-color: #eaeded;
+}
+
+/* Error state */
+#avatar-container img.error {
+    border-color: #d13212; /* Amazon's error red */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .avatar-popup {
+        display: none !important; /* Disable popup on mobile */
+    }
+
+    #avatar-container {
+        gap: 8px;
+    }
+
+    #avatar-container img {
+        width: 32px;
+        height: 32px;
+    }
+
+    #avatar-container span {
+        font-size: 12px;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .avatar-popup {
+        background: #232f3e;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .popup-username {
+        color: white;
+    }
+
+    #avatar-container img:hover {
+        border-color: #37475A;
+    }
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+    #avatar-container img {
+        border: 2px solid ButtonText;
+    }
+
+    .avatar-popup {
+        border: 1px solid ButtonText;
+    }
+}
+
+/* Print styles */
+@media print {
+    .avatar-popup {
+        display: none !important;
+    }
+
+    #avatar-container img {
+        print-color-adjust: exact;
+    }
+}
+
+/* Accessibility improvements */
+#avatar-container a:focus {
+    outline: 2px solid #0066c0;
+    outline-offset: 2px;
+}
+
+#avatar-container a:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Ensure popup stays within viewport */
+.avatar-popup {
+    max-height: calc(100vh - 20px);
+    overflow-y: auto;
+}
