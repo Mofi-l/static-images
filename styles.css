@@ -11,114 +11,108 @@
 
 /* Widget Base Styles */
 #aux-widget {
-  width: 250px;
-  height: auto;
-  max-height: 500px;
-  overflow-y: auto;
-  transition: height 0.3s ease;
-  position: fixed;
-  top: 5px;
-  left: 1000px;
-  z-index: 10000;
-  background: url(https://raw.githubusercontent.com/Mofi-l/static-images/main/Background.jpg) no-repeat center center / cover;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  color: white;
+width: 250px;
+height: auto;
+max-height: 500px;
+overflow-y: auto;
+transition: height 0.3s ease;
+position: fixed;
+top: 5px;
+left: 1000px;
+z-index: 10000;
+background: url(https://raw.githubusercontent.com/Mofi-l/static-images/main/Background.jpg) no-repeat center center / cover;
+padding: 20px;
+border-radius: 5px;
+box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+color: white;
 }
 
 /* Enhanced Dropdown Styling */
 #aux-widget select {
-  width: 100%;
-  padding: 8px 10px;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  background-color: var(--dropdown-bg);
-  color: var(--text-color);
-  font-size: 13px;
-  font-family: 'Arial', sans-serif;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 8px center;
-  background-size: 16px;
-  padding-right: 30px;
-  margin-bottom: 2.5px;
+width: 100%;
+padding: 8px 10px;
+border: 1px solid var(--border-color);
+border-radius: 4px;
+background-color: var(--dropdown-bg);
+color: var(--text-color);
+font-size: 13px;
+font-family: 'Arial', sans-serif;
+cursor: pointer;
+transition: all 0.2s ease-in-out;
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+background-repeat: no-repeat;
+background-position: right 8px center;
+background-size: 16px;
+padding-right: 30px;
 }
 
 /* Dropdown States */
 #aux-widget select:hover {
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+border-color: rgba(255, 255, 255, 0.3);
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 #aux-widget select:focus {
-  outline: none;
-  border-color: var(--highlight-color);
-  box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.2);
+outline: none;
+border-color: var(--highlight-color);
+box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.2);
 }
 
 #aux-widget select:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+opacity: 0.6;
+cursor: not-allowed;
 }
 
 /* Dropdown Options */
 #aux-widget select option {
-  background-color: var(--dropdown-bg);
-  color: var(--text-color);
-  padding: 10px;
-  border: none;
-  font-size: 13px;
+background-color: var(--dropdown-bg);
+color: var(--text-color);
+padding: 10px;
+border: none;
+font-size: 13px;
 }
 
 #aux-widget select option:hover {
-  background-color: var(--dropdown-hover);
+background-color: var(--dropdown-hover);
 }
 
-/* Selected state styling */
 #aux-widget select option:checked {
-  background-color: rgba(108, 92, 231, 0.2);
-}
-
-#aux-widget select:has(option:checked) {
-  border: 2px solid #ffffff;
+background-color: rgba(108, 92, 231, 0.2);
 }
 
 /* Container Styling */
 #aux-l2-container,
 #aux-l3-container {
-  margin-top: 3px;
-  position: relative;
+margin-top: 10px;
+position: relative;
 }
 
 /* Timer display styling */
 #aux-timer {
-  padding: 5px;
-  margin-top: 5px;
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 8px;
-  font-size: 13px;
-  color: #333;
+padding: 5px;
+margin-top: 5px;
+background: rgba(255, 255, 255, 0.85);
+border-radius: 4px;
+font-size: 13px;
+color: #333;
 }
 
 /* Firefox-specific styles */
 @-moz-document url-prefix() {
-  #aux-widget select {
-    color: var(--text-color);
-    background-color: var(--dropdown-bg);
-    padding-right: 8px;
-  }
+#aux-widget select {
+color: var(--text-color);
+background-color: var(--dropdown-bg);
+padding-right: 8px;
+}
 }
 
 /* Transparent dropdown styling */
 .transparent-dropdown {
-  background-color: var(--dropdown-bg) !important;
-  color: var(--text-color) !important;
+background-color: var(--dropdown-bg) !important;
+color: var(--text-color) !important;
 }
 
 /* Part 2: Action Buttons and Icon Effects */
