@@ -383,102 +383,8 @@ p {
 }
 
 /*----------------------
-3. Modals & Popups
+3. Popups
 ----------------------*/
-
-/* Modal Base */
-/* Authentication Modal Specific Styles */
-.auth-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-    backdrop-filter: blur(8px);
-}
-
-.auth-modal-content {
-    background: linear-gradient(145deg, #ffffff, #f5f5f5);
-    padding: 30px 40px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-}
-
-.auth-title {
-    margin-bottom: 20px;
-    color: #2c3e50;
-    font-size: 24px;
-    font-weight: 600;
-}
-
-.auth-input {
-    width: 100%;
-    padding: 12px 15px;
-    margin-bottom: 15px;
-    border: 2px solid #e1e1e1;
-    border-radius: 10px;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-.auth-password-container {
-    position: relative;
-    margin-bottom: 20px;
-}
-
-.auth-toggle-btn {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: #007bff;
-    cursor: pointer;
-}
-
-.auth-button-group {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-}
-
-.auth-submit-btn,
-.auth-cancel-btn {
-    flex: 1;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.auth-submit-btn {
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    color: white;
-}
-
-.auth-cancel-btn {
-    background: linear-gradient(135deg, #6c757d, #495057);
-    color: white;
-}
-
-.auth-submit-btn:hover,
-.auth-cancel-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
 /* Tooltips */
 .tooltip {
     position: relative;
@@ -771,11 +677,6 @@ p {
 
     .container {
         padding: 0 var(--spacing-sm);
-    }
-
-    .modal {
-        width: 95%;
-        padding: var(--spacing-md);
     }
 
     .grid {
