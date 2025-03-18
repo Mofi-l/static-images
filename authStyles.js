@@ -147,6 +147,71 @@ export function injectAuthStyles() {
             transform: translateY(0);
         }
     }
+
+    /* Progress indicator styles */
+    #import-progress {
+        margin-top: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+        margin: 10px 0;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .progress-bar::after {
+        content: '';
+        display: block;
+        width: 40%;
+        height: 100%;
+        background: #0095ff;
+        position: absolute;
+        left: -40%;
+        animation: progress 1.5s infinite ease-in-out;
+    }
+
+    .progress-text {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.8);
+        margin-top: 10px;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+    }
+
+    @keyframes progress {
+        0% { 
+            transform: translateX(0%); 
+            opacity: 0.8;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% { 
+            transform: translateX(350%); 
+            opacity: 0.8;
+        }
+    }
+
+    /* Rest of your existing styles... */
+
+    @keyframes modalSlideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
     `;
     document.head.appendChild(authStyles);
 }
