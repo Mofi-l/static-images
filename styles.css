@@ -22,7 +22,7 @@
   z-index: 10000;
   background: url(https://raw.githubusercontent.com/Mofi-l/static-images/main/Background.jpg) no-repeat center center / cover;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
   color: white;
 }
@@ -32,7 +32,7 @@
   width: 100%;
   padding: 8px 10px;
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: 8px;
   background-color: var(--dropdown-bg);
   color: var(--text-color);
   font-size: 13px;
@@ -47,6 +47,7 @@
   background-position: right 8px center;
   background-size: 16px;
   padding-right: 30px;
+  margin-bottom: 5px;
 }
 
 /* Dropdown States */
@@ -79,14 +80,19 @@
   background-color: var(--dropdown-hover);
 }
 
+/* Selected state styling */
 #aux-widget select option:checked {
   background-color: rgba(108, 92, 231, 0.2);
+}
+
+#aux-widget select:has(option:checked) {
+  border: 2px solid #ffffff;
 }
 
 /* Container Styling */
 #aux-l2-container,
 #aux-l3-container {
-  margin-top: 10px;
+  margin-top: 5px;
   position: relative;
 }
 
@@ -95,7 +101,7 @@
   padding: 5px;
   margin-top: 5px;
   background: rgba(255, 255, 255, 0.85);
-  border-radius: 4px;
+  border-radius: 8px;
   font-size: 13px;
   color: #333;
 }
