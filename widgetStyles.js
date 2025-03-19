@@ -77,43 +77,90 @@ export function injectWidgetStyles() {
 }
 
 /* Animation Keyframes */
-@keyframes cosmicMinimize {
+@keyframes minimizeEffect {
     0% {
-        transform: translate(0, 0) scale(1);
+        transform: translate(0, 0) scale(1) rotate(0deg);
         opacity: 1;
+        filter: brightness(1);
     }
-    50% {
-        transform: translate(var(--target-x), var(--target-y) - 50px) scale(0.5);
+    30% {
+        transform: translate(calc(var(--target-x) * 0.3), calc(var(--target-y) * 0.3)) 
+                  scale(0.8) rotate(-5deg);
+        opacity: 0.9;
+        filter: brightness(1.2);
+    }
+    60% {
+        transform: translate(calc(var(--target-x) * 0.6), calc(var(--target-y) * 0.6)) 
+                  scale(0.5) rotate(5deg);
         opacity: 0.7;
+        filter: brightness(0.8);
     }
     100% {
-        transform: translate(var(--target-x), var(--target-y)) scale(0);
+        transform: translate(var(--target-x), var(--target-y)) scale(0) rotate(0deg);
         opacity: 0;
+        filter: brightness(0.5);
     }
 }
 
-@keyframes cosmicMaximize {
+@keyframes maximizeEffect {
     0% {
-        transform: translate(var(--target-x), var(--target-y)) scale(0);
+        transform: translate(var(--target-x), var(--target-y)) scale(0) rotate(0deg);
         opacity: 0;
+        filter: brightness(0.5);
     }
-    50% {
-        transform: translate(var(--target-x), var(--target-y) - 50px) scale(0.5);
+    40% {
+        transform: translate(calc(var(--target-x) * 0.6), calc(var(--target-y) * 0.6)) 
+                  scale(0.5) rotate(-5deg);
         opacity: 0.7;
+        filter: brightness(0.8);
+    }
+    70% {
+        transform: translate(calc(var(--target-x) * 0.3), calc(var(--target-y) * 0.3)) 
+                  scale(0.8) rotate(5deg);
+        opacity: 0.9;
+        filter: brightness(1.2);
     }
     100% {
-        transform: translate(0, 0) scale(1);
+        transform: translate(0, 0) scale(1) rotate(0deg);
         opacity: 1;
+        filter: brightness(1);
     }
+}
+
+}
+
+/* Add blur effect during animation */
+@keyframes blurEffect {
+    0% { backdrop-filter: blur(0px); }
+    50% { backdrop-filter: blur(3px); }
+    100% { backdrop-filter: blur(0px); }
 }
 
 /* Animation Classes */
 #aux-widget.minimizing {
-    animation: cosmicMinimize 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: 
+        minimizeEffect 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+        blurEffect 0.8s ease forwards;
+    transform-origin: center center;
 }
 
 #aux-widget.maximizing {
-    animation: cosmicMaximize 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: 
+        maximizeEffect 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+        blurEffect 0.8s ease forwards;
+    transform-origin: center center;
+}
+
+/* Add transition for smooth state changes */
+#aux-widget {
+    transition: all 0.3s ease;
+    will-change: transform, opacity, filter;
+}
+
+/* Optional: Add shadow animation during transitions */
+#aux-widget.minimizing,
+#aux-widget.maximizing {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Action Buttons */
