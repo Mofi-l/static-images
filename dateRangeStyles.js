@@ -1,6 +1,101 @@
 export function injectDateRangeStyles() {
     const styleSheet = document.createElement('style');
     styleSheet.textContent = `
+        .date-range-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        .date-range-modal.fade-in {
+            opacity: 1;
+        }
+
+        .date-range-modal.fade-out {
+            opacity: 0;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #232f3e;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: auto;
+            max-width: 90%;
+            position: relative;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: #ffffff;
+        }
+
+        .modal-content p {
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            color: #999999;
+        }
+
+        #calendar-container {
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn-primary, .btn-secondary {
+            flex: 1;
+            padding: 12px;
+            font-size: 0.875rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #28a745, #218838);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #218838, #1e7e34);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            transform: translateY(-1px);
+        }
+
         .flatpickr-calendar {
             background-color: #ffffff;
             border-radius: 12px;
@@ -30,7 +125,7 @@ export function injectDateRangeStyles() {
         }
 
         .flatpickr-monthDropdown-months {
-            color: #ffffff;
+            color: #000000;
         }
 
         .flatpickr-weekdays {
@@ -71,24 +166,6 @@ export function injectDateRangeStyles() {
             border-color: #f5f6f7;
         }
 
-        .flatpickr-day.selected:hover,
-        .flatpickr-day.startRange:hover,
-        .flatpickr-day.endRange:hover {
-            background-color: #35445c;
-            border-color: #35445c;
-        }
-
-        .flatpickr-prev-month,
-        .flatpickr-next-month {
-            color: #ffffff !important;
-            fill: #ffffff !important;
-        }
-
-        .flatpickr-prev-month:hover,
-        .flatpickr-next-month:hover {
-            opacity: 0.8;
-        }
-
         .flatpickr-day.today {
             border-color: #232f3e;
         }
@@ -98,20 +175,19 @@ export function injectDateRangeStyles() {
             color: #ffffff;
         }
 
-        .flatpickr-day.disabled {
-            color: #cccccc;
-        }
+        @media (max-width: 480px) {
+            .modal-content {
+                padding: 16px;
+                width: 95%;
+            }
 
-        .numInputWrapper:hover {
-            background: transparent;
-        }
+            .button-container {
+                flex-direction: column;
+            }
 
-        .numInputWrapper span {
-            border: none;
-        }
-
-        .numInputWrapper span:hover {
-            background: rgba(255, 255, 255, 0.1);
+            .btn-primary, .btn-secondary {
+                width: 100%;
+            }
         }
     `;
     document.head.appendChild(styleSheet);
