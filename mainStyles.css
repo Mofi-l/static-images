@@ -81,3 +81,231 @@
     align-items: center;
     justify-content: center;
 }
+
+/* AUX Widget Container */
+#aux-widget {
+    position: fixed;
+    top: 5px;
+    left: 1000px;
+    z-index: 10000;
+    background: rgba(35, 47, 62, 0.95);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    color: white;
+    width: 300px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#aux-widget.minimizing {
+    animation: minimizeWidget 0.5s forwards;
+}
+
+#aux-widget.maximizing {
+    animation: maximizeWidget 0.5s forwards;
+}
+
+/* Dropdown Selects */
+#aux-widget select {
+    width: 100%;
+    padding: 10px 35px 10px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: white;
+    font-size: 14px;
+    appearance: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+#aux-widget select:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+#aux-widget select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.2);
+}
+
+/* Custom Dropdown Arrow */
+#aux-l2-container, #aux-l3-container {
+    position: relative;
+}
+
+#aux-l2-container::after,
+#aux-l3-container::after,
+#aux-widget select + ::after {
+    content: '';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+}
+
+/* Timer Display */
+#aux-timer {
+    padding: 10px;
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: center;
+    color: white;
+    font-family: monospace;
+}
+
+/* Action Buttons Container */
+#action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+}
+
+/* Action Button Icons */
+#action-buttons img {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+#action-buttons img:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Toggle Button */
+#toggle-button {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#toggle-button img {
+    width: 12px;
+    height: 12px;
+    transition: transform 0.3s ease;
+}
+
+#toggle-button.active img {
+    transform: rotate(180deg);
+}
+
+/* Minimize Box */
+#minimized-box {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    backdrop-filter: blur(5px);
+    transition: background 0.3s ease;
+}
+
+#minimized-box:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Animations */
+@keyframes minimizeWidget {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+}
+
+@keyframes maximizeWidget {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Version Text */
+#version-text {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#version-text:hover {
+    color: white;
+}
+
+/* Username Display */
+#username-display {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#avatar-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#avatar-container img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    #aux-widget {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 300px;
+    }
+}
