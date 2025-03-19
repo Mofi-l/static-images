@@ -1,162 +1,118 @@
 export function injectDateRangeStyles() {
-    const styles = `
-        /* Modal Overlay */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            animation: fadeIn 0.3s ease-out;
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = `
+        .flatpickr-calendar {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            padding: 16px;
+            width: 307px !important;
         }
 
-        /* Modal Content */
-        .date-range-modal {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 350px;
-            animation: slideIn 0.3s ease-out;
+        .flatpickr-months {
+            background-color: #232f3e;
+            border-radius: 8px 8px 0 0;
+            padding: 10px 0;
         }
 
-        .modal-content {
-            text-align: center;
+        .flatpickr-month {
+            color: #ffffff !important;
         }
 
-        .modal-title {
-            color: #333333;
-            font-size: 24px;
+        .flatpickr-current-month {
+            font-size: 1.1em;
+            padding: 0;
+        }
+
+        .flatpickr-current-month input.cur-year {
+            color: #ffffff;
+        }
+
+        .flatpickr-monthDropdown-months {
+            color: #ffffff;
+        }
+
+        .flatpickr-weekdays {
+            background-color: #ffffff;
+            margin-top: 8px;
+        }
+
+        .flatpickr-weekday {
+            color: #232f3e !important;
             font-weight: 600;
-            margin-bottom: 10px;
         }
 
-        .modal-subtitle {
-            color: #666666;
-            font-size: 14px;
-            margin-bottom: 20px;
+        .flatpickr-day {
+            border-radius: 6px;
+            color: #333333;
+            margin: 2px;
+            height: 36px;
+            line-height: 36px;
+            width: 36px;
         }
 
-        /* Calendar Container */
-        #calendar-container {
-            margin-bottom: 20px;
-            padding: 10px;
-            background: #ffffff;
-            border-radius: 10px;
+        .flatpickr-day.selected,
+        .flatpickr-day.startRange,
+        .flatpickr-day.endRange {
+            background-color: #232f3e;
+            border-color: #232f3e;
+            color: #ffffff;
         }
 
-        /* Button Styles */
-        .button-group {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
+        .flatpickr-day.inRange {
+            background-color: #e6eaf0;
+            border-color: #e6eaf0;
+            color: #232f3e;
         }
 
-        #apply-date-range,
-        #cancel-date-range {
-            flex: 1;
-            padding: 12px 24px;
+        .flatpickr-day:hover {
+            background-color: #f5f6f7;
+            border-color: #f5f6f7;
+        }
+
+        .flatpickr-day.selected:hover,
+        .flatpickr-day.startRange:hover,
+        .flatpickr-day.endRange:hover {
+            background-color: #35445c;
+            border-color: #35445c;
+        }
+
+        .flatpickr-prev-month,
+        .flatpickr-next-month {
+            color: #ffffff !important;
+            fill: #ffffff !important;
+        }
+
+        .flatpickr-prev-month:hover,
+        .flatpickr-next-month:hover {
+            opacity: 0.8;
+        }
+
+        .flatpickr-day.today {
+            border-color: #232f3e;
+        }
+
+        .flatpickr-day.today:hover {
+            background-color: #232f3e;
+            color: #ffffff;
+        }
+
+        .flatpickr-day.disabled {
+            color: #cccccc;
+        }
+
+        .numInputWrapper:hover {
+            background: transparent;
+        }
+
+        .numInputWrapper span {
             border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
         }
 
-        #apply-date-range {
-            background: linear-gradient(135deg, #28a745, #218838);
-            color: white;
-            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
-        }
-
-        #apply-date-range:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
-        }
-
-        #cancel-date-range {
-            background: #f8f9fa;
-            color: #333333;
-            border: 1px solid #dee2e6;
-        }
-
-        #cancel-date-range:hover {
-            background: #e9ecef;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 480px) {
-            .date-range-modal {
-                max-width: 95%;
-                padding: 20px;
-                margin: 10px;
-            }
-
-            .modal-title {
-                font-size: 20px;
-            }
-
-            .button-group {
-                flex-direction: column;
-            }
-
-            #apply-date-range,
-            #cancel-date-range {
-                width: 100%;
-                padding: 10px;
-            }
-        }
-
-        /* Optional: Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #666;
+        .numInputWrapper span:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
     `;
-
-    const styleSheet = document.createElement('style');
-    styleSheet.textContent = styles;
     document.head.appendChild(styleSheet);
 }
