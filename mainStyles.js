@@ -1,176 +1,82 @@
 export function injectMainStyles() {
     const styles = `
 /*----------------------
-1. Core Variables & Reset
+1. Components & Forms
 ----------------------*/
-:root {
-    /* Color Variables */
-    --primary-color: #6c5ce7;
-    --secondary-color: #2c3e50;
-    --accent-color: #2ecc71;
-    --text-color: #ffffff;
-    --error-color: #ff4757;
-    --success-color: #2ecc71;
-    --warning-color: #ffa502;
-    --info-color: #2e86de;
-    
-    /* Background Colors */
-    --bg-primary: #232f3e;
-    --bg-secondary: rgba(0, 0, 0, 0.85);
-    --bg-overlay: rgba(0, 0, 0, 0.7);
-    
-    /* Border Colors */
-    --border-color: rgba(255, 255, 255, 0.15);
-    --border-light: rgba(255, 255, 255, 0.1);
-    
-    /* Spacing */
-    --spacing-xs: 4px;
-    --spacing-sm: 8px;
-    --spacing-md: 16px;
-    --spacing-lg: 24px;
-    --spacing-xl: 32px;
-    
-    /* Border Radius */
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 16px;
-    --radius-round: 50%;
-    
-    /* Shadows */
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
-    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3);
-    
-    /* Transitions */
-    --transition-fast: 0.2s ease;
-    --transition-normal: 0.3s ease;
-    --transition-slow: 0.5s ease;
-}
 
-/* Reset */
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    font-size: 16px;
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
-                 Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
-    line-height: 1.5;
-    color: var(--text-color);
-    background-color: var(--bg-primary);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button, input, select, textarea {
-    font: inherit;
-    color: inherit;
-}
-
-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-    margin-bottom: 0.5em;
-    font-weight: 600;
-    line-height: 1.2;
-}
-
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
-
-p {
-    margin-bottom: 1rem;
-}
-
-/* Utility Classes */
-.hidden {
-    display: none !important;
-}
-
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-}
-
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
-
-.flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.flex-between {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.flex-column {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Grid System */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-md);
-}
-
-.grid {
-    display: grid;
-    gap: var(--spacing-md);
-}
-
-.grid-2 { grid-template-columns: repeat(2, 1fr); }
-.grid-3 { grid-template-columns: repeat(3, 1fr); }
-.grid-4 { grid-template-columns: repeat(4, 1fr); }
-
-@media (max-width: 768px) {
-    .grid-2, .grid-3, .grid-4 {
-        grid-template-columns: 1fr;
+    /* Enhanced Dropdown Styling */
+    #aux-widget select {
+        width: 100%;
+        padding: 6px;
+        border: 1px solid #ddd; /* Slightly lighter border */
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, 0.75); /* Darker background */
+        color: white;
+        font-size: 13px;
+        font-family: 'Arial', sans-serif;
+        transition: background-color 0.3s ease, color 0.3s ease;
     }
-}
 
-/*----------------------
-2. Components & Forms
-----------------------*/
+    /* No change in background color on hover */
+    #aux-widget select:hover {
+        background-color: rgba(0, 0, 0, 0.75); /* Keep background black */
+        color: white; /* Keep text color white */
+    }
+
+    /* Dropdown option styles - consistent black background */
+    #aux-widget select option {
+        background-color: #000; /* Solid black background */
+        color: white;
+        padding: 8px;
+        border: none;
+    }
+
+    /* Remove hover effects for options */
+    #aux-widget select option:hover {
+        background-color: #000; /* Keep the black background */
+        color: white; /* Keep the text white */
+    }
+
+    /* Container styling for margins */
+    #aux-l2-container, #aux-l3-container {
+        margin-top: 10px;
+    }
+
+    /* Timer display styling */
+    #aux-timer {
+        padding: 5px;
+        margin-top: 5px;
+        background: rgba(255, 255, 255, 0.85); /* Softer background for the timer */
+        border-radius: 4px;
+        font-size: 13px;
+        color: #333;
+    }
+
+    /* Subtle box shadow for the widget */
+    #aux-widget {
+        width: 250px;
+        height: auto;
+        max-height: 500px;
+        overflow-y: auto;
+        transition: height 0.3s ease;
+    }
+
+    #aux-widget div {
+        margin-top: 5px;
+    }
+
+    /* Focus effect for the dropdown */
+    #aux-widget select:focus {
+        outline: none;
+        border: 1px solid #6c5ce7; /* Blue border on focus */
+        box-shadow: 0 0 6px rgba(108, 92, 231, 0.7); /* Softer glow effect */
+    }
+
+    /* Transparent dropdown styling after selection */
+    .transparent-dropdown {
+        background-color: rgba(0, 0, 0, 0.75) !important; /* Keep background black after selection */
+        color: white !important; /* Ensure text is still visible */
+    }
 
 /* Buttons */
 .btn {
