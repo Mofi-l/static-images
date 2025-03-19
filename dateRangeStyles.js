@@ -3,17 +3,17 @@ export function injectDateRangeStyles() {
     const styles = `
         /* Date Range Modal Styles */
         .date-range-modal {
-            background: #1a1f2e;
+            background: #ffffff;
             border-radius: 20px;
             padding: 30px;
             width: 90%;
             max-width: 400px;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .modal-content {
-            color: #ffffff;
+            color: #333333;
         }
 
         .modal-title {
@@ -21,84 +21,70 @@ export function injectDateRangeStyles() {
             font-weight: 600;
             text-align: center;
             margin-bottom: 10px;
-            color: #fff;
+            color: #333333;
         }
 
         .modal-subtitle {
             text-align: center;
-            color: rgba(255, 255, 255, 0.7);
+            color: #666666;
             font-size: 14px;
             margin-bottom: 20px;
         }
 
         /* Calendar Wrapper Styles */
         .calendar-wrapper {
-            background: rgba(255, 255, 255, 0.05);
+            background: #ffffff;
             border-radius: 15px;
             padding: 20px;
             margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
         }
 
         /* Flatpickr Calendar Styles */
         .flatpickr-calendar {
-            background: transparent !important;
+            background: #ffffff !important;
             border: none !important;
             box-shadow: none !important;
             width: 100% !important;
             max-width: 340px !important;
             margin: 0 auto !important;
-            padding: 0 !important;
-        }
-
-        .flatpickr-calendar.inline {
-            box-shadow: none !important;
-            background: transparent !important;
         }
 
         .flatpickr-months {
             padding: 10px 0;
-            background: transparent !important;
         }
 
         .flatpickr-month {
             height: 40px !important;
-            color: #fff !important;
-            fill: #fff !important;
-            background: transparent !important;
+            color: #333333 !important;
+            fill: #333333 !important;
         }
 
         .flatpickr-current-month {
-            padding: 0 !important;
-            color: #fff !important;
+            color: #333333 !important;
             font-size: 16px !important;
         }
 
         .flatpickr-current-month input.cur-year {
-            color: #fff !important;
+            color: #333333 !important;
         }
 
         .flatpickr-months .flatpickr-prev-month,
         .flatpickr-months .flatpickr-next-month {
-            color: #fff !important;
-            fill: #fff !important;
+            color: #333333 !important;
+            fill: #333333 !important;
             height: 40px !important;
             padding: 10px !important;
         }
 
         .flatpickr-weekdays {
-            background: transparent !important;
             margin: 10px 0 !important;
         }
 
         .flatpickr-weekday {
-            background: transparent !important;
-            color: rgba(255, 255, 255, 0.7) !important;
+            color: #666666 !important;
             font-size: 14px !important;
-        }
-
-        .flatpickr-days {
-            background: transparent !important;
-            border: none !important;
+            font-weight: bold !important;
         }
 
         .dayContainer {
@@ -112,8 +98,7 @@ export function injectDateRangeStyles() {
             height: 40px !important;
             line-height: 40px !important;
             margin: 2px !important;
-            color: #fff !important;
-            background: transparent !important;
+            color: #333333 !important;
             border: none !important;
             border-radius: 50% !important;
         }
@@ -122,31 +107,33 @@ export function injectDateRangeStyles() {
         .flatpickr-day.startRange,
         .flatpickr-day.endRange {
             background: #6c5ce7 !important;
-            color: #fff !important;
+            color: #ffffff !important;
             border: none !important;
         }
 
         .flatpickr-day.inRange {
             background: rgba(108, 92, 231, 0.2) !important;
+            color: #333333 !important;
             border: none !important;
             box-shadow: -5px 0 0 rgba(108, 92, 231, 0.2), 5px 0 0 rgba(108, 92, 231, 0.2) !important;
         }
 
         .flatpickr-day:hover {
-            background: rgba(255, 255, 255, 0.1) !important;
+            background: rgba(108, 92, 231, 0.1) !important;
         }
 
         .flatpickr-day.today {
             border: 2px solid #6c5ce7 !important;
+            color: #6c5ce7 !important;
         }
 
         .flatpickr-day.prevMonthDay,
         .flatpickr-day.nextMonthDay {
-            color: rgba(255, 255, 255, 0.3) !important;
+            color: #999999 !important;
         }
 
         .flatpickr-day.disabled {
-            color: rgba(255, 255, 255, 0.1) !important;
+            color: #cccccc !important;
         }
 
         /* Button Group Styles */
@@ -179,12 +166,18 @@ export function injectDateRangeStyles() {
         }
 
         #cancel-date-range {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+            background: #f0f0f0;
+            color: #333333;
         }
 
         #cancel-date-range:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: #e0e0e0;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.5) !important;
+            backdrop-filter: blur(5px) !important;
         }
 
         /* Mobile Responsiveness */
