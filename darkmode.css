@@ -47,27 +47,19 @@ input:checked + .slider:before {
   transform: translateX(21px);
 }
 
-/* Dark mode styles */
-body.dark-mode {
-  background-color: #1a1a1a !important;
-  color: #ffffff !important;
+/* Dark mode styles for Paragon pages */
+html[data-theme='dark'] {
+  filter: invert(88%) hue-rotate(180deg) !important;
 }
 
-body.dark-mode #aux-widget select,
-body.dark-mode #aux-widget input,
-body.dark-mode #aux-widget button {
-  background-color: #2d2d2d !important;
-  color: #ffffff !important;
-  border: 1px solid #404040 !important;
+html[data-theme='dark'] img,
+html[data-theme='dark'] video,
+html[data-theme='dark'] iframe,
+html[data-theme='dark'] .no-dark-invert {
+  filter: invert(100%) hue-rotate(180deg) !important;
 }
 
-body.dark-mode #aux-timer {
-  background-color: #2d2d2d !important;
-  color: #ffffff !important;
-}
-
-body.dark-mode .auth-modal-content,
-body.dark-mode .custom-alert-box {
-  background-color: #2d2d2d !important;
-  color: #ffffff !important;
+/* Preserve widget styles in dark mode */
+html[data-theme='dark'] #aux-widget {
+  filter: invert(100%) hue-rotate(180deg) !important;
 }
