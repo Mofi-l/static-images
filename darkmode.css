@@ -1,56 +1,73 @@
-/* darkmode.css */
-.dark-mode-switch {
-  position: relative;
+/* Dark mode switch styles */
+.theme-switch {
+  position: absolute;
+  top: 15px;
+  right: 70px;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 45px;
+  height: 24px;
+  z-index: 10001;
 }
 
-.dark-mode-switch input {
+.theme-switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.dark-mode-slider {
+.slider {
   position: absolute;
   cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: rgba(255, 255, 255, 0.4);
   transition: .4s;
-  border-radius: 34px;
+  border-radius: 24px;
 }
 
-.dark-mode-slider:before {
+.slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
   background-color: white;
   transition: .4s;
   border-radius: 50%;
 }
 
-input:checked + .dark-mode-slider {
+input:checked + .slider {
   background-color: #2196F3;
 }
 
-input:checked + .dark-mode-slider:before {
-  transform: translateX(26px);
+input:checked + .slider:before {
+  transform: translateX(21px);
 }
 
-/* Dark mode styles for root */
-:root[data-theme="dark"] {
-  background-color: #1a1a1a;
-  color: #ffffff;
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
 }
 
-:root[data-theme="dark"] .aux-widget {
-  background-color: #2d2d2d;
-  color: #ffffff;
+body.dark-mode #aux-widget select,
+body.dark-mode #aux-widget input,
+body.dark-mode #aux-widget button {
+  background-color: #2d2d2d !important;
+  color: #ffffff !important;
+  border: 1px solid #404040 !important;
+}
+
+body.dark-mode #aux-timer {
+  background-color: #2d2d2d !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .auth-modal-content,
+body.dark-mode .custom-alert-box {
+  background-color: #2d2d2d !important;
+  color: #ffffff !important;
 }
