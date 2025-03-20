@@ -47,46 +47,111 @@ export function injectDarkModeStyles() {
             transform: translateX(26px);
         }
 
-        :root[data-theme='dark'] {
-            --background-color: #1a1a1a;
-            --text-color: #ffffff;
-            --border-color: #333333;
-            --hover-color: #2c2c2c;
-            background-color: var(--background-color);
-            color: var(--text-color);
+        /* Paragon-specific dark mode styles */
+        body[data-theme='dark'] {
+            background-color: #1a1a1a !important;
+            color: #ffffff !important;
         }
 
-        :root[data-theme='dark'] * {
-            background-color: var(--background-color);
-            color: var(--text-color);
-            border-color: var(--border-color);
+        /* Main content area */
+        body[data-theme='dark'] #mainContent,
+        body[data-theme='dark'] .mainContent,
+        body[data-theme='dark'] .view-case-content,
+        body[data-theme='dark'] .case-details {
+            background-color: #1a1a1a !important;
+            color: #ffffff !important;
         }
 
-        :root[data-theme='dark'] a {
-            color: #4a9eff;
+        /* Headers and navigation */
+        body[data-theme='dark'] .header,
+        body[data-theme='dark'] .nav-bar,
+        body[data-theme='dark'] .navigation-bar {
+            background-color: #2c2c2c !important;
+            border-color: #333333 !important;
         }
 
-        :root[data-theme='dark'] button,
-        :root[data-theme='dark'] input,
-        :root[data-theme='dark'] select {
-            background-color: #2c2c2c;
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
+        /* Panels and containers */
+        body[data-theme='dark'] .panel,
+        body[data-theme='dark'] .container,
+        body[data-theme='dark'] .case-panel,
+        body[data-theme='dark'] .detail-panel {
+            background-color: #2c2c2c !important;
+            border-color: #333333 !important;
+            color: #ffffff !important;
         }
 
-        :root[data-theme='dark'] button:hover,
-        :root[data-theme='dark'] input:hover,
-        :root[data-theme='dark'] select:hover {
-            background-color: var(--hover-color);
+        /* Tables */
+        body[data-theme='dark'] table,
+        body[data-theme='dark'] .table {
+            background-color: #2c2c2c !important;
+            color: #ffffff !important;
         }
 
-        :root[data-theme='dark'] table {
-            border-color: var(--border-color);
+        body[data-theme='dark'] th,
+        body[data-theme='dark'] td {
+            background-color: #2c2c2c !important;
+            border-color: #333333 !important;
+            color: #ffffff !important;
         }
 
-        :root[data-theme='dark'] th,
-        :root[data-theme='dark'] td {
-            border-color: var(--border-color);
+        body[data-theme='dark'] tr:nth-child(even) {
+            background-color: #262626 !important;
+        }
+
+        /* Form elements */
+        body[data-theme='dark'] input,
+        body[data-theme='dark'] select,
+        body[data-theme='dark'] textarea {
+            background-color: #333333 !important;
+            color: #ffffff !important;
+            border-color: #444444 !important;
+        }
+
+        /* Links */
+        body[data-theme='dark'] a {
+            color: #4a9eff !important;
+        }
+
+        body[data-theme='dark'] a:hover {
+            color: #66b1ff !important;
+        }
+
+        /* Buttons */
+        body[data-theme='dark'] button,
+        body[data-theme='dark'] .button {
+            background-color: #2c2c2c !important;
+            color: #ffffff !important;
+            border-color: #444444 !important;
+        }
+
+        /* Modals and popups */
+        body[data-theme='dark'] .modal,
+        body[data-theme='dark'] .popup,
+        body[data-theme='dark'] .dialog {
+            background-color: #2c2c2c !important;
+            border-color: #333333 !important;
+        }
+
+        /* Sidebars */
+        body[data-theme='dark'] .sidebar,
+        body[data-theme='dark'] .side-panel {
+            background-color: #2c2c2c !important;
+            border-color: #333333 !important;
+        }
+
+        /* Case-specific elements */
+        body[data-theme='dark'] .case-header,
+        body[data-theme='dark'] .case-body,
+        body[data-theme='dark'] .case-footer {
+            background-color: #1a1a1a !important;
+            color: #ffffff !important;
+        }
+
+        /* Search elements */
+        body[data-theme='dark'] .search-box,
+        body[data-theme='dark'] .search-results {
+            background-color: #2c2c2c !important;
+            color: #ffffff !important;
         }
     `;
     document.head.appendChild(styleSheet);
