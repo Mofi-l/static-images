@@ -97,6 +97,32 @@ export function injectAuthStyles() {
         background: rgba(255, 255, 255, 0.15);
     }
 
+.toggle-password-btn {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eye-icon {
+    width: 24px;
+    height: 24px;
+    fill: rgba(255, 255, 255, 0.5);
+    transition: fill 0.2s ease;
+}
+
+.toggle-password-btn:hover .eye-icon {
+    fill: rgba(255, 255, 255, 0.8);
+}
+
+
     @keyframes modalAppear {
         from {
             opacity: 0;
