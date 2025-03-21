@@ -97,7 +97,7 @@ export function injectAuthStyles() {
     }
 
     .auth-submit-btn {
-        background: linear-gradient(135deg, #60a5fa, #a78bfa);
+        background: linear-gradient(135deg, #ffffff, #a78bfa);
         color: white;
         position: relative;
         overflow: hidden;
