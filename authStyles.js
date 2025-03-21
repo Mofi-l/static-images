@@ -1,3 +1,8 @@
+// authStyles.js
+export function injectAuthStyles() {
+    const authStyles = document.createElement('style');
+    authStyles.textContent = `
+
 .auth-modal {
     position: fixed;
     inset: 0;
@@ -160,4 +165,8 @@
     to {
         transform: translate(-50%, -50%) rotate(360deg);
     }
+}
+
+    `;
+    document.head.appendChild(authStyles);
 }
